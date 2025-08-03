@@ -30,7 +30,7 @@ export default async function handler(req, res) {
     });
 
     await transporter.sendMail({
-      from: `"Company HR" <${process.env.EMAIL_USER}>`,
+      from: `"Company HR" <${process.env.sudeeshcoder@gmail.com}>`,
       to: email,
       subject: "Bio-Data Form Registered",
       text: `Hello ${name},\n\nYour bio-data form has been successfully registered. We will get back to you soon.\n\nThank you!`
