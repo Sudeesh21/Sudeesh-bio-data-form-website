@@ -39,7 +39,7 @@ export default async function handler(req, res) {
     res.status(200).json({ message: "Form submitted and email sent" });
 
   } catch (err) {
-    console.error(err);
-    res.status(500).json({ message: "Error submitting form" });
-  }
+  console.error("Detailed error:", err); // This will show in Vercel logs
+  res.status(500).json({ message: "Error submitting form", error: err.message });
+}
 }
