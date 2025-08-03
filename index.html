@@ -141,7 +141,7 @@
 
 <div class="container">
   <h1>Welcome to Our Company</h1>
-  <form id="biodataForm">
+  <form id="biodataForm" method="POST" action="/api/submit">
     <label>Full Name:</label>
     <input type="text" name="name" required><br><br>
 
@@ -182,21 +182,23 @@ document.getElementById("biodataForm").addEventListener("submit", async function
 
   const formData = Object.fromEntries(new FormData(this).entries());
 
-  let res = await fetch("https://sudeesh-bio-data-form-website.vercel.app/api/submit", {
+  let res = await fetch("/api/submit", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(formData)
   });
+let data = await res.json();
+if (res.ok) {
+  alert(data.message || "Form submitted successfully! Check your email for confirmation.");
+} else {
+  alert(data.message || "Something went wrong. Please try again.");
+}
 
-  if (res.ok) {
-    alert("Form submitted successfully! Check your email for confirmation.");
-    this.reset();
-  } else {
-    alert("Something went wrong. Please try again.");
-  }
+
 });
 </script>
 
 </body>
 </html>
+
 
