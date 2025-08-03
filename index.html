@@ -145,7 +145,7 @@
 
         <h2>BIO DATA</h2>
 
-        <form action="submit_biodata.html" method="post">
+        <form id="biodataForm" method="post">
             <label for="name">Full Name:</label>
             <input type="text" id="name" name="name" required>
 
@@ -178,6 +178,26 @@
 
             <input type="submit" value="Submit Bio-Data">
         </form>
+        <script>
+document.getElementById("biodataForm").addEventListener("submit", async function(e) {
+  e.preventDefault(); // prevent page reload
+
+  const formData = Object.fromEntries(new FormData(this).entries());
+
+  let res = await fetch("https://sudeesh-bio-data-form-website.vercel.app/api/submit", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(formData)
+  });
+
+  if (res.ok) {
+    alert("Form submitted successfully! Check your email for confirmation.");
+    this.reset();
+  } else {
+    alert("Something went wrong. Please try again.");
+  }
+});
+</script>
 
         <div class="footer">
             <p>For more information, visit our <a href="about_us.html">About Us</a> page or <a href="contact.html">Contact Us</a>.</p>
@@ -185,3 +205,4 @@
     </div>
 </body>
 </html>
+
