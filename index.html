@@ -139,52 +139,50 @@
 </head>
 <body>
 
-    <div class="container">
-        <h1>Welcome to Our Company</h1>
-        <p>Our company is committed to providing the best services to our clients. We value our employees and partners and aim to create a productive work environment that supports innovation and growth. If you are interested in joining our team, please fill out the form below with your bio-data.</p>
+<div class="container">
+  <h1>Welcome to Our Company</h1>
+  <form id="biodataForm">
+    <label>Full Name:</label>
+    <input type="text" name="name" required><br><br>
 
-        <h2>BIO DATA</h2>
+    <label>Date of Birth:</label>
+    <input type="date" name="dob" required><br><br>
 
-        <form id="biodataForm" method="post">
-            <label for="name">Full Name:</label>
-            <input type="text" id="name" name="name" required>
+    <label>Email:</label>
+    <input type="email" name="email" required><br><br>
 
-            <label for="dob">Date of Birth:</label>
-            <input type="date" id="dob" name="dob" required>
+    <label>Phone:</label>
+    <input type="tel" name="phone" required><br><br>
 
-            <label for="email">Email Address:</label>
-            <input type="email" id="email" name="email" required>
+    <label>Address:</label>
+    <textarea name="address" required></textarea><br><br>
 
-            <label for="phone">Phone Number:</label>
-            <input type="tel" id="phone" name="phone" required>
+    <label>Education:</label>
+    <input type="text" name="education" required><br><br>
 
-            <label for="address">Address:</label>
-            <textarea id="address" name="address" rows="4" required></textarea>
+    <label>Skills:</label>
+    <textarea name="skills" required></textarea><br><br>
 
-            <label for="education">Education:</label>
-            <input type="text" id="education" name="education" required>
+    <label>Experience (Years):</label>
+    <input type="number" name="experience" required><br><br>
 
-            <label for="skills">Skills:</label>
-            <textarea id="skills" name="skills" rows="3" required></textarea>
+    <label>Expected Salary:</label>
+    <input type="text" name="salary" required><br><br>
 
-            <label for="experience">Experience (in years):</label>
-            <input type="number" id="experience" name="experience" min="0" required>
+    <label>Position Applied For:</label>
+    <input type="text" name="position" required><br><br>
 
-            <label for="salary">Expected Salary:</label>
-            <input type="text" id="salary" name="salary" required>
+    <input type="submit" value="Submit Bio-Data">
+  </form>
+</div>
 
-            <label for="position">Position Applied For:</label>
-            <input type="text" id="position" name="position" required>
-
-            <input type="submit" value="Submit Bio-Data">
-        </form>
-        <script>
+<script>
 document.getElementById("biodataForm").addEventListener("submit", async function(e) {
   e.preventDefault(); // prevent page reload
 
   const formData = Object.fromEntries(new FormData(this).entries());
 
-  let res = await fetch("https://sudeesh-bio-data-form-website.vercel.app/api/submit", {
+  let res = await fetch("https://sudeesh-bio-data-form-website.vercel.app//api/submit", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(formData)
@@ -199,10 +197,5 @@ document.getElementById("biodataForm").addEventListener("submit", async function
 });
 </script>
 
-        <div class="footer">
-            <p>For more information, visit our <a href="about_us.html">About Us</a> page or <a href="contact.html">Contact Us</a>.</p>
-        </div>
-    </div>
 </body>
 </html>
-
