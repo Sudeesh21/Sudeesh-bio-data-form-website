@@ -14,8 +14,11 @@ export default async function handler(req, res) {
   let client;
   try {
     console.log("Connecting to MongoDB...");
-    client = new MongoClient(process.env.MONGO_URI);
-    await client.connect();
+    const client = new MongoClient(process.env.MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+});
+await client.connect();
     console.log("✅ MongoDB connected!");
 
     const db = client.db("biodataDB");
